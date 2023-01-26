@@ -21,7 +21,7 @@ class HomeActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "HomeActivity")
+                Text(text = getString(R.string.home_screen))
             }
         }
     }

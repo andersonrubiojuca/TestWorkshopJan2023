@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -84,9 +85,6 @@ class LoginActivityTest {
         loginArrange {
             mockHomeActivityCall()
         }
-        loginArrange{
-            mockHomeActivityCall()
-        }
 
         loginAct(composeTestRule) {
             typeEmail("wesley.marcolino@accenture.com")
@@ -97,6 +95,27 @@ class LoginActivityTest {
 
         loginAssert(composeTestRule) {
             assertHomeScreenWasCalled()
+        }
+    }
+
+    @Ignore("Um teste falho pra ver se detecta string")
+    @Test
+    fun givenValidEmailAndPassword_whenLogin_shouldGoToHomeScreenInOtherWay() {
+//        loginArrange {
+//            mockHomeActivityCall()
+//        }
+
+        loginAct(composeTestRule) {
+            typeEmail("anderson@accenture.com")
+            typePassword("Soneca#45a")
+
+            clickLogin()
+        }
+
+            Thread.sleep(1000)
+
+        loginAssert(composeTestRule) {
+            assertTextWasShown(getString(R.string.home_screen))
         }
     }
 
